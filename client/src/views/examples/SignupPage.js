@@ -106,7 +106,7 @@ class SignupPage extends React.Component {
           errorMessages: []
         })
       }).then(() => {
-        this.props.history.push(`/email-sent`)
+        this.props.history.push(`/profile-page/${this.props.currentUser._id}`)
       }).catch((error) => {
         this.setState({
           errorMessages: error.response.data.errors,
@@ -178,14 +178,14 @@ class SignupPage extends React.Component {
                           Register
                     </CardTitle>
                         <div className="social text-center">
-                          <FacebookLogin
+                          {/* <FacebookLogin
                             appId="565328274160052"
                             fields="name,email,picture"
                             callback={this.responseFacebook}
                             icon={<IconContext.Provider value={{ size: "2em" }}><IoLogoFacebook /></IconContext.Provider>}
                             onClick={this.componentClicked}
                             textButton=' '
-                          />
+                          /> */}
 
                           <h5 className="card-description">or go old school</h5>
                         </div>
@@ -288,5 +288,3 @@ class SignupPage extends React.Component {
 }
 
 export default SignupPage;
-
-// trying to do something here
