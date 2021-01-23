@@ -45,7 +45,7 @@ const Editor = (props) => {
             value={props.content}
             config={props.profile ? config2 : config}
             tabIndex={1} // tabIndex of textarea
-            onBlur={newContent => [props.updateContent(newContent), setContent(newContent)]} // preferred to use only this option to update the content for performance reasons
+            onBlur={newContent => [props.updateContent(newContent.target.innerHTML), setContent(newContent.target.innerHTML)]} // preferred to use only this option to update the content for performance reasons
             onChange={newContent => { }}
             style={{ color: 'red' }}
         />
