@@ -15,6 +15,9 @@
 .jodit-tooltip {
   display: none;
 }
+.jodit-editor__resize {
+  display: none;
+}
 
 .text-story {
   color: black !important;
@@ -148,7 +151,7 @@
     opacity: 0.76 !important;
     filter: alpha(opacity=76);
     display: block !important;
-    content: "" !important;
+    content: '' !important;
     position: absolute !important;
     width: 100% !important;
     height: 100% !important;
@@ -165,5 +168,4 @@
 
 .kep-login-facebook {
   border-radius: 50% !important;
-
 }
