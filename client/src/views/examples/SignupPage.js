@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import BodyClassName from 'react-body-classname'
 import defaultAvatar from 'assets/img/placeholder.jpg'
 import FacebookLogin from 'react-facebook-login'
-import defaultAvatarBg from 'assets/img/dense-spider-web.jpg'
+import defaultAvatarBg from 'assets/img/bgBig.jpg'
 import { IoLogoFacebook } from 'react-icons/io'
 import { IconContext } from 'react-icons'
 
@@ -92,7 +92,7 @@ class SignupPage extends React.Component {
     const email = this.state.email
     const password = this.state.password
     const checked = this.state.checked
-    const image = `https://api.dicebear.com/7.x/bottts/svg?seed=${this.state.userName}`
+    const image = `https://api.dicebear.com/7.x/lorelei-neutral/svg?seed=${this.state.userName}`
     const bgImage = defaultAvatarBg
     const userName = '@' + this.state.userName
     axios
