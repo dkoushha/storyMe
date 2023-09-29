@@ -3,6 +3,7 @@ import JoditEditor from 'jodit-react'
 import '../../assets/css/App.css'
 
 const Editor = (props) => {
+
   const editor = useRef(null)
   const [content, setContent] = useState('')
   // config for the add story page
@@ -58,6 +59,7 @@ const Editor = (props) => {
       style={{ color: 'red' }}
     />
   )
+
 }
 
 export default Editor
