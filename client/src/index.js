@@ -1,8 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import axios from 'axios'
-
 
 import App from './App'
 
@@ -15,13 +14,14 @@ import App from './App'
 //   document.getElementById("root")
 // );
 
-document.getElementById('root').innerText = 'The React app has not connected to the backend yet.'
+document.getElementById('root').innerText =
+  'The React app has not connected to the backend yet.'
 
-axios.get('/api/checkuser').then(res => {
+axios.get('/api/checkuser').then((res) => {
   ReactDOM.render(
     <Router>
-    <App user={res.data.userDoc} />
-    </Router>, 
-    document.getElementById('root'));
+      <App user={res.data.userDoc} />
+    </Router>,
+    document.getElementById('root'),
+  )
 })
-

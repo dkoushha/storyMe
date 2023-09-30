@@ -1,12 +1,12 @@
-import React from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import BodyClassName from 'react-body-classname';
-import defaultAvatar from "assets/img/placeholder.jpg";
-import FacebookLogin from 'react-facebook-login';
-import defaultAvatarBg from "assets/img/dense-spider-web.jpg";
-import { IoLogoFacebook } from "react-icons/io";
-import { IconContext } from "react-icons";
+import React from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import BodyClassName from 'react-body-classname'
+import defaultAvatar from 'assets/img/placeholder.jpg'
+import FacebookLogin from 'react-facebook-login'
+import defaultAvatarBg from 'assets/img/bgBig.jpg'
+import { IoLogoFacebook } from 'react-icons/io'
+import { IconContext } from 'react-icons'
 
 // reactstrap components
 import {
@@ -25,11 +25,11 @@ import {
   Container,
   Row,
   Col,
-} from "reactstrap";
+} from 'reactstrap'
 
 // core components
-import ScrollTransparentNavbar from "components/Navbars/ScrollTransparentNavbar.js";
-import FooterBlack from "components/Footers/FooterBlack";
+import ScrollTransparentNavbar from 'components/Navbars/ScrollTransparentNavbar.js'
+import FooterBlack from 'components/Footers/FooterBlack'
 
 class SignupPage extends React.Component {
   state = {
@@ -40,47 +40,47 @@ class SignupPage extends React.Component {
     userName: '',
     passwordFocus: false,
     emailFocus: false,
-    userNameFocus: false
-
+    userNameFocus: false,
   }
   setChecked = (bool) => {
     this.setState({
-      checked: bool
+      checked: bool,
     })
   }
   setPasswordFocus = (bool) => {
     this.setState({
-      passwordFocus: bool
+      passwordFocus: bool,
     })
   }
   setEmailFocus = (bool) => {
     this.setState({
-      emailFocus: bool
+      emailFocus: bool,
     })
   }
   setUserNameFocus = (bool) => {
     this.setState({
-      emailFocus: bool
+      emailFocus: bool,
     })
   }
   handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     const checked = event.target.checked
     this.setState({
       [name]: value,
-      checked: checked
-    });
+      checked: checked,
+    })
   }
 
   responseFacebook = (response) => {
-    axios.post("/api/facebook", { response })
+    axios
+      .post('/api/facebook', { response })
       .then((res) => {
         this.props.updateUser(res.data)
-      }).then(() => {
-        this.props.history.push(`/profile-page/${this.props.currentUser._id}`)
-      }).catch((error) => {
-
       })
+      .then(() => {
+        this.props.history.push(`/profile-page/${this.props.currentUser._id}`)
+      })
+      .catch((error) => {})
   }
 
   componentClicked = () => {
@@ -92,22 +92,32 @@ class SignupPage extends React.Component {
     const email = this.state.email
     const password = this.state.password
     const checked = this.state.checked
-    const image = defaultAvatar
+    const image = `https://api.dicebear.com/7.x/lorelei-neutral/svg?seed=${this.state.userName}`
     const bgImage = defaultAvatarBg
     const userName = '@' + this.state.userName
-    axios.post("/api/signup", { email, password, checked, image, bgImage, userName })
+    axios
+      .post('/api/signup', {
+        email,
+        password,
+        checked,
+        image,
+        bgImage,
+        userName,
+      })
       .then((res) => {
         this.props.updateUser(res.data)
 
         this.setState({
           checked: false,
-          email: "",
-          password: "",
-          errorMessages: []
+          email: '',
+          password: '',
+          errorMessages: [],
         })
-      }).then(() => {
+      })
+      .then(() => {
         this.props.history.push(`/profile-page/${this.props.currentUser._id}`)
-      }).catch((error) => {
+      })
+      .catch((error) => {
         this.setState({
           errorMessages: error.response.data.errors,
         })
@@ -123,7 +133,8 @@ class SignupPage extends React.Component {
             <div
               className="page-header-image"
               style={{
-                backgroundImage: "url(" + require("assets/img/universe-bg.png") + ")",
+                backgroundImage:
+                  'url(' + require('assets/img/universe-bg.png') + ')',
               }}
             ></div>
             <div className="content">
@@ -138,7 +149,7 @@ class SignupPage extends React.Component {
                         <h5 className="info-title">StoryMe</h5>
                         <p className="description">
                           Here is where your stories become alive
-                          </p>
+                        </p>
                       </div>
                     </div>
                     <div className="info info-horizontal">
@@ -148,9 +159,9 @@ class SignupPage extends React.Component {
                       <div className="description">
                         <h5 className="info-title">Easy and Fast</h5>
                         <p className="description">
-                          It only takes 2 clicks and a few seconds to share
-                          your creations with the rest of the world
-                    </p>
+                          It only takes 2 clicks and a few seconds to share your
+                          creations with the rest of the world
+                        </p>
                       </div>
                     </div>
                     <div className="info info-horizontal">
@@ -162,21 +173,21 @@ class SignupPage extends React.Component {
                         <p className="description">
                           Reach thousands of readers around the world by simply
                           publishing your beloved writings
-                    </p>
+                        </p>
                       </div>
                     </div>
                   </Col>
                   <Col className="mr-auto" md="6" lg="4">
-                    <Card className="card-signup" >
+                    <Card className="card-signup">
                       <CardBody>
                         <img
-                          style={{ height: "40px", width: '40px' }}
+                          style={{ height: '40px', width: '40px' }}
                           alt="..."
-                          src={require("assets/img/logo.png")}
+                          src={require('assets/img/logo.png')}
                         ></img>
                         <CardTitle className="text-center" tag="h4">
                           Register
-                    </CardTitle>
+                        </CardTitle>
                         <div className="social text-center">
                           {/* <FacebookLogin
                             appId="565328274160052"
@@ -190,12 +201,22 @@ class SignupPage extends React.Component {
                           <h5 className="card-description">or go old school</h5>
                         </div>
                         <Form className="form" onSubmit={this.handleFormSubmit}>
-                          {this.state.errorMessages && this.state.errorMessages.map((m) =>
-                            <h6 key={m} style={{ color: "red", margin: '0px' }}>{m}</h6>
-                          )}
-                          <h6 style={{ color: "red", margin: '0px' }}>{this.state.logInError}</h6>
+                          {this.state.errorMessages &&
+                            this.state.errorMessages.map((m) => (
+                              <h6
+                                key={m}
+                                style={{ color: 'red', margin: '0px' }}
+                              >
+                                {m}
+                              </h6>
+                            ))}
+                          <h6 style={{ color: 'red', margin: '0px' }}>
+                            {this.state.logInError}
+                          </h6>
                           <InputGroup
-                            className={this.emailFocus ? "input-group-focus" : ""}
+                            className={
+                              this.emailFocus ? 'input-group-focus' : ''
+                            }
                           >
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>
@@ -214,7 +235,9 @@ class SignupPage extends React.Component {
                             ></Input>
                           </InputGroup>
                           <InputGroup
-                            className={this.passwordFocus ? "input-group-focus" : ""}
+                            className={
+                              this.passwordFocus ? 'input-group-focus' : ''
+                            }
                           >
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>
@@ -233,7 +256,9 @@ class SignupPage extends React.Component {
                             ></Input>
                           </InputGroup>
                           <InputGroup
-                            className={this.userNameFocus ? "input-group-focus" : ""}
+                            className={
+                              this.userNameFocus ? 'input-group-focus' : ''
+                            }
                           >
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>
@@ -253,12 +278,14 @@ class SignupPage extends React.Component {
                           </InputGroup>
                           <FormGroup check>
                             <Label check>
-                              <Input type="checkbox" onChange={this.handleChange}></Input>
+                              <Input
+                                type="checkbox"
+                                onChange={this.handleChange}
+                              ></Input>
                               <span className="form-check-sign"></span>
-                              <Link to='/terms-and-conditions'>
-                                I agree to
-                                the terms and conditions.
-                          </Link>
+                              <Link to="/terms-and-conditions">
+                                I agree to the terms and conditions.
+                              </Link>
                             </Label>
                           </FormGroup>
                           <CardFooter className="text-center">
@@ -269,7 +296,7 @@ class SignupPage extends React.Component {
                               size="lg"
                             >
                               Get Started
-                        </Button>
+                            </Button>
                           </CardFooter>
                         </Form>
                       </CardBody>
@@ -280,11 +307,10 @@ class SignupPage extends React.Component {
             </div>
             <FooterBlack />
           </div>
-
         </div>
       </BodyClassName>
     )
   }
 }
 
-export default SignupPage;
+export default SignupPage

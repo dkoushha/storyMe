@@ -1,16 +1,13 @@
 // core components
 import React, { Component } from 'react'
-import Footer from "components/Footers/Footer.js";
-import ScrollTransparentNavbar from "components/Navbars/ScrollTransparentNavbar";
-import BodyClassName from "react-body-classname";
+import Footer from 'components/Footers/Footer.js'
+import ScrollTransparentNavbar from 'components/Navbars/ScrollTransparentNavbar'
+import BodyClassName from 'react-body-classname'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import FacebookLogin from 'react-facebook-login';
-import { IoLogoFacebook } from "react-icons/io";
-import { IconContext } from "react-icons";
-
-
-
+import FacebookLogin from 'react-facebook-login'
+import { IoLogoFacebook } from 'react-icons/io'
+import { IconContext } from 'react-icons'
 
 // reactstrap components
 import {
@@ -27,9 +24,7 @@ import {
   Container,
   Col,
   Row,
-} from "reactstrap";
-
-
+} from 'reactstrap'
 
 export class LoginPage extends Component {
   state = {
@@ -37,22 +32,22 @@ export class LoginPage extends Component {
     passwordFocus: false,
     email: '',
     password: '',
-    errorMessage: []
+    errorMessage: [],
   }
   setNameFocus = (bool) => {
     this.setState({
-      nameFocus: bool
+      nameFocus: bool,
     })
   }
   setPasswordFocus = (bool) => {
     this.setState({
-      passwordFocus: bool
+      passwordFocus: bool,
     })
   }
 
   handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
+    const { name, value } = event.target
+    this.setState({ [name]: value })
   }
   handleFormSubmit = (event) => {
     event.preventDefault()
@@ -61,28 +56,19 @@ export class LoginPage extends Component {
 
     // {!this.props.currentUser
 
-    axios.post("/api/login", { email, password })
+    axios
+      .post('/api/login', { email, password })
       .then((resp) => {
         this.props.updateUser(resp.data)
-        this.setState({ email: "", password: "" });
-      }).then(() => {
-        this.props.history.push(`/profile-page/${this.props.currentUser._id}`)
-      }).catch((error) => {
-        this.setState({
-          errorMessage: error.response.data.errors
-        })
+        this.setState({ email: '', password: '' })
       })
-
-  }
-
-  responseFacebook = (response) => {
-    axios.post("/api/facebook", { response })
-      .then((res) => {
-        this.props.updateUser(res.data)
-      }).then(() => {
+      .then(() => {
         this.props.history.push(`/profile-page/${this.props.currentUser._id}`)
-      }).catch((error) => {
-
+      })
+      .catch((error) => {
+        this.setState({
+          errorMessage: error.response.data.errors,
+        })
       })
   }
 
@@ -90,13 +76,13 @@ export class LoginPage extends Component {
     return (
       <BodyClassName className="login-page ">
         <div>
-
           <ScrollTransparentNavbar updateUser={this.props.updateUser} />
           <div className="page-header header-filter" filter-color="blue">
             <div
               className="page-header-image"
               style={{
-                backgroundImage: "url(" + require("assets/img/green-universe.jpg") + ")",
+                backgroundImage:
+                  'url(' + require('assets/img/green-universe.jpg') + ')',
               }}
             ></div>
             <div className="content">
@@ -104,13 +90,12 @@ export class LoginPage extends Component {
                 <Row>
                   <Col className="ml-auto mr-auto" md="5">
                     <Card className="card-login card-plain">
-
                       <Form onSubmit={this.handleFormSubmit}>
                         <CardHeader className="text-center">
                           <div className="logo-container">
                             <img
                               alt="..."
-                              src={require("assets/img/logo.png")}
+                              src={require('assets/img/logo.png')}
                             ></img>
                           </div>
                           {/* <FacebookLogin
@@ -123,14 +108,19 @@ export class LoginPage extends Component {
                             textButton=' '
                           /> */}
                         </CardHeader>
-                        {this.state.errorMessage && this.state.errorMessage.map((m) =>
-                          <p key={m} style={{ textAlign: 'center', color: "red" }}>{m}</p>
+                        {this.state.errorMessage && (
+                          <p
+                            key={this.state.errorMessage}
+                            style={{ textAlign: 'center', color: 'red' }}
+                          >
+                            {this.state.errorMessage}
+                          </p>
                         )}
                         <CardBody>
                           <InputGroup
                             className={
-                              "no-border input-lg" +
-                              (this.state.nameFocus ? " input-group-focus" : "")
+                              'no-border input-lg' +
+                              (this.state.nameFocus ? ' input-group-focus' : '')
                             }
                           >
                             <InputGroupAddon addonType="prepend">
@@ -150,8 +140,10 @@ export class LoginPage extends Component {
                           </InputGroup>
                           <InputGroup
                             className={
-                              "no-border input-lg" +
-                              (this.state.passwordFocus ? " input-group-focus" : "")
+                              'no-border input-lg' +
+                              (this.state.passwordFocus
+                                ? ' input-group-focus'
+                                : '')
                             }
                           >
                             <InputGroupAddon addonType="prepend">
@@ -178,14 +170,10 @@ export class LoginPage extends Component {
                             size="lg"
                           >
                             Get Started
-                        </Button>
+                          </Button>
                         </CardFooter>
                         <div className="pull-left">
-
-                          <Link
-                            className="link footer-link"
-                            to={'/sign-up'}
-                          >
+                          <Link className="link footer-link" to={'/sign-up'}>
                             <h6> Create Account</h6>
                           </Link>
                         </div>
@@ -199,10 +187,8 @@ export class LoginPage extends Component {
           </div>
         </div>
       </BodyClassName>
-
-    );
+    )
   }
 }
 
 export default LoginPage
-

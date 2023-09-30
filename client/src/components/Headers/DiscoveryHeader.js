@@ -1,48 +1,46 @@
-import React from "react";
+import React from 'react'
 
 // reactstrap components
-import { Row, Col } from "reactstrap";
+import { Row, Col } from 'reactstrap'
 
 // core components
 
 const BlogPostsHeader = () => {
-  let pageHeader = React.createRef();
+  let pageHeader = React.createRef()
   React.useEffect(() => {
     if (window.innerWidth > 991) {
       const updateScroll = () => {
-        let windowScrollTop = window.pageYOffset / 3;
+        let windowScrollTop = window.pageYOffset / 3
         pageHeader.current.style.transform =
-          "translate3d(0," + windowScrollTop + "px,0)";
-      };
-      window.addEventListener("scroll", updateScroll);
+          'translate3d(0,' + windowScrollTop + 'px,0)'
+      }
+      window.addEventListener('scroll', updateScroll)
       return function cleanup() {
-        window.removeEventListener("scroll", updateScroll);
-      };
+        window.removeEventListener('scroll', updateScroll)
+      }
     }
-  });
+  })
   return (
     <>
-      <div className="page-header page-header-small"
-        filter-color="blue">
+      <div className="page-header page-header-small" filter-color="blue">
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/bg11.jpg") + ")",
+            backgroundImage:
+              'url(' + require('assets/img/background.jpg') + ')',
           }}
           ref={pageHeader}
         ></div>
         <div className="content-center">
           <Row>
             <Col className="ml-auto mr-auto text-center" md="8">
-              <h2 className="title">
-                DISCOVER AN UNIVERSE OF STORIES
-              </h2>
+              <h2 className="title">DISCOVER AN UNIVERSE OF STORIES</h2>
             </Col>
           </Row>
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default BlogPostsHeader;
+export default BlogPostsHeader
