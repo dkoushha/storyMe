@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import axios from 'axios'
+import axios from '../src/axios'
 
 import App from './App'
 

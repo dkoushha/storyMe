@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import axios from '../../axios'
 import ImageUpload from 'components/CustomUpload/ImageUpload.js'
 import AlertMessage from 'views/examples/Alert'
 import bgImage from "assets/img/bgBig.jpg";

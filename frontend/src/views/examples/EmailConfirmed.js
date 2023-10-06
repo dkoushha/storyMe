@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
-import axios from 'axios'
+import axios from '../../axios'
 // core components
 import Footer from "components/Footers/Footer";
 import EditFixedNavbar from 'components/Navbars/EditFixedNavbar';

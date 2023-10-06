@@ -2,7 +2,7 @@
 import React from "react";
 // react plugin used to create datetimepicker
 import ReactDatetime from "react-datetime";
-import axios from 'axios'
+import axios from '../../axios'
 import { Link } from 'react-router-dom'
 
 // reactstrap components

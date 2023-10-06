@@ -1,5 +1,5 @@
 import React from "react";
-import axios from 'axios'
+import axios from '../../axios'
 import Editor from "views/examples/editor";
 import defaultAvatar from "assets/img/placeholder.jpg";
 import DropdownIconsCategory from "views/examples/DropdownIconsCategory"

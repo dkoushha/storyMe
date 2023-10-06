@@ -4,7 +4,7 @@ import Footer from 'components/Footers/Footer.js'
 import ScrollTransparentNavbar from 'components/Navbars/ScrollTransparentNavbar'
 import BodyClassName from 'react-body-classname'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import axios from '../../axios'
 
 // reactstrap components
 import {
