@@ -101,6 +101,7 @@ class SignupPage extends React.Component {
         userName,
       })
       .then((res) => {
+        console.log("outPut ~ file: SignupPage.js:104 ~ SignupPage ~ .then ~ res:", res)
         this.props.updateUser(res.data)
 
         this.setState({
