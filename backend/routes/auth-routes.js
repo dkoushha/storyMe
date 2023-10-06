@@ -9,25 +9,12 @@ const bcrypt = require('bcryptjs')
 // require the user model !!!!
 const Users = require('../models/user-model')
 
-//require the token model and random taoken
-// Require token model
-const Token = require('../models/token-model')
-const randomToken = require('random-token')
-const nodemailer = require('nodemailer')
+
 // add express-validation
 const { validationResult } = require('express-validator')
 const signUpValidation = require('../helpers/middlewares').signUpValidation
 const loggedIn = require('../helpers/middlewares').loggedIn
-// const userDefaultImage = require('../client/src/assets/img/placeholder.jpg')
 
-// email authorization
-// const transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: process.env.GMAIL_USERNAME,
-//     pass: process.env.GMAIL_PASSWORD,
-//   },
-// });
 
 //POST /api/singup
 authRoutes.post('/signup', signUpValidation, loggedIn, (req, res, next) => {
