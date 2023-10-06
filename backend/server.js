@@ -5,7 +5,7 @@ const favicon = require('serve-favicon')
 const mongoose = require('mongoose')
 const logger = require('morgan')
 const path = require('path')
-// const cors = require("cors");
+const cors = require("cors");
 
 require('dotenv').config()
 
@@ -89,10 +89,10 @@ app.locals.title = 'Express - StoryMe Database'
 // ADD CORS SETTINGS HERE TO ALLOW CROSS-ORIGIN INTERACTION:
 
 // allow access to the API from different domains/origins
-// app.use(cors({
+app.use(cors({
 // this could be multiple domains/origins, but we will allow just our React app
-//   origin: ["http://localhost:3000"]
-// }));
+  origin: ["http://localhost:3000", "https://darling-pie-4e23de.netlify.app"]
+}));
 
 // ROUTES MIDDLEWARE STARTS HERE:
 
@@ -108,14 +108,5 @@ app.use((req, res, next) => {
   res.sendFile(__dirname + '/frontend/build/index.html')
 })
 
-// app.get('/profile-page/:id', (req, res, next) => {
-//   console.log('profile route', req.params)
-//   res.json("I'm the unknown error")
-// })
-// const PORT = process.env.PORT || 3000
-
-// app.listen(PORT, () => {
-//   console.log(`Server listening on ${PORT}`)
-// })
 
 module.exports = app
