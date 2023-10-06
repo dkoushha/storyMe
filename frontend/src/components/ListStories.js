@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from '../axios';
 import ModalComponent from './ModalComponent';
 import CardComponent from './CardComponent';
 import LoginButton from './LoginButton';

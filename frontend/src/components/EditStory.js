@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from '../axios';
 import Editor from "views/examples/editor";
 import DOMPurify from "dompurify";
 // import Select from "react-select";
@@ -247,7 +247,7 @@ class EditStory extends Component {
                                             size="lg"
                                         >
                                             SAVE CHANGES
-                          </Button>
+                                        </Button>
                                     </ModalFooter>
                                 </Form>
                             </Col>

@@ -87,12 +87,18 @@ app.use(passport.session())
 app.locals.title = 'Express - StoryMe Database'
 
 // ADD CORS SETTINGS HERE TO ALLOW CROSS-ORIGIN INTERACTION:
-
+const whitelist = ['http://localhost:3000', 'https://storyme-forntend.onrender.com'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 // allow access to the API from different domains/origins
-app.use(cors({
-// this could be multiple domains/origins, but we will allow just our React app
-  origin: ["http://localhost:3000", "https://darling-pie-4e23de.netlify.app"]
-}));
+app.use(cors(corsOptions));
 
 // ROUTES MIDDLEWARE STARTS HERE:
 

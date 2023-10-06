@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from '../axios';
 import DOMPurify from 'dompurify'
 import EditFixedNavbar from './Navbars/EditFixedNavbar';
 import StoryDetailsHeader from './Headers/StoryDetailsHeader';
